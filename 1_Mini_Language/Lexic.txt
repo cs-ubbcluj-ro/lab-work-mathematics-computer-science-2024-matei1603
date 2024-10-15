@@ -1,0 +1,33 @@
+
+Alphabet:
+- Upper and lower case letters of the English alphabet <letter>
+- Underline character _
+- Decimal digits (0-9) <digit>
+- Operators <operator>
+- Separators <separator>
+
+Identifiers:
+- Must start with a $ followed by at least a letter, optionally followed by digits
+- Example: $var1, $x, $count
+
+Constants:
+- Integer:
+  <non-zero digit> ::= 1 | ... | 9
+  <digit> ::= 0 | 1 | ... | 9
+  <sign> ::= + | -
+  <unsigned integer> ::= <non-zero digit> | <unsigned integer> <digit>
+  <signed integer> ::= 0 | <unsigned integer> | <sign> <unsigned integer>
+
+- Float:
+  <float> ::= <signed integer> "." <digit> {<digit>}
+
+- String:
+  <string> ::= '"' {<char>} '"'
+  <char> ::= <letter> | <digit> | <special symbol>
+
+Special symbols, representing:
+- Arithmetic operators: + - * / %
+- Relational operators: := < <= == => > <>
+- Separators: ( ) [ ] { } : ; , space
+- Reserved words:
+  int float struct if else while do then var read write begin end

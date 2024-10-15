@@ -1,0 +1,33 @@
+Program Structure:
+program ::= "begin" decllist cmpdstmt "end"
+
+Declarations:
+decllist ::= declaration ";" decllist | declaration
+declaration ::= "var" identifier ":" type
+type ::= "int" | "float" | "char" | "real" | arraydecl | structdecl
+arraydecl ::= "array" "[" integer "]" "of" type
+structdecl ::= "struct" "{" decllist "}"
+
+Compound Statements:
+cmpdstmt ::= "begin" stmtlist "end"
+stmtlist ::= stmt ";" stmtlist | stmt
+
+Statements:
+stmt ::= assignstmt | iostmt | ifstmt | whilestmt
+assignstmt ::= identifier ":=" expression
+iostmt ::= "read" "(" identifier ")" | "write" "(" identifier ")"
+ifstmt ::= "if" condition "then" stmt ["else" stmt]
+whilestmt ::= "while" condition "do" stmt
+
+Expressions:
+expression ::= term {("+" | "-") term}
+term ::= factor {("*" | "/") factor}
+factor ::= identifier | integer | float | char | real | arrayaccess | "(" expression ")"
+arrayaccess ::= identifier "[" expression "]"
+
+Conditions:
+condition ::= expression relop expression
+relop ::= "<" | "<=" | "=" | ">=" | ">" | "<>"
+
+Arrays:
+array ::= identifier "[" integer "]"
