@@ -1,0 +1,32 @@
+
+This document specifies the format for the input file (FA.in) that defines a finite automaton.
+
+### EBNF Definition:
+finite_automaton = 
+    "states:" states_list "
+" 
+    "alphabet:" alphabet_list "
+" 
+    "transitions:" transitions_list "
+" 
+    "final_states:" final_states_list "
+" ;
+
+states_list = state { "," state } ;
+state = letter { letter | digit } ;
+
+alphabet_list = symbol { "," symbol } ;
+symbol = letter ;
+
+transitions_list = "(" state "," symbol "," state ")" { ", (" state "," symbol "," state ")" } ;
+
+final_states_list = state { "," state } ;
+
+
+### Explanation of Components:
+1. **states**: A list of all states in the automaton.
+2. **alphabet**: A list of all symbols in the automaton's alphabet.
+3. **transitions**: A list of transition rules. Each rule is represented as `(current_state, input_symbol, next_state)`.
+4. **final_states**: A list of all final or accepting states.
+
+
