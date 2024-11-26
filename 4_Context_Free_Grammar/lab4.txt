@@ -1,4 +1,6 @@
 # This grammar defines the syntax of a minilanguage in a context-free grammar (CFG) format.
+S = <program>
+
 N = {<program>, <declaration_list>, <declaration>, <statement_list>, <statement>, 
     <if_statement>, <while_statement>, <do_statement>, <expression>, 
     <arithmetic_expression>, <relational_expression>, <identifier>, <constant>, 
@@ -8,8 +10,7 @@ N = {<program>, <declaration_list>, <declaration>, <statement_list>, <statement>
 T = {int, float, struct, if, else, while, do, then, var, read, write, begin, end, 
     +, -, *, /, %, :=, <, <=, ==, =>, >, <>, (, ), [, ], {, }, :, ;, ,, " "}
 # Terminals
-
-
+P=
 # The top-level structure of a program
 <program> ::= <declarations> <statements>
 # A program consists of optional declarations followed by a sequence of statements.
@@ -82,7 +83,9 @@ T = {int, float, struct, if, else, while, do, then, var, read, write, begin, end
 <relational_operator> ::= "<" | "<=" | "==" | ">=" | ">" | "<>"
 # Relational operators include standard comparison operators.
 
-<identifier> ::= "$" <letter> {<letter_or_digit>}
+<identifier> ::= "$" <letter> <letter_or_digit_list>
+<letter_or_digit_list> ::= <letter_or_digit> <letter_or_digit_list> | epsilon
+<letter_or_digit> ::= <letter> | <digit>
 # Identifiers must start with a `$` followed by letters and/or digits.
 
 <constant> ::= <integer> | <float> | <string>
