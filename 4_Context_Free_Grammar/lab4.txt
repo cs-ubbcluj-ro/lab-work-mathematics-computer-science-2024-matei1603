@@ -1,4 +1,14 @@
 # This grammar defines the syntax of a minilanguage in a context-free grammar (CFG) format.
+N = {<program>, <declaration_list>, <declaration>, <statement_list>, <statement>, 
+    <if_statement>, <while_statement>, <do_statement>, <expression>, 
+    <arithmetic_expression>, <relational_expression>, <identifier>, <constant>, 
+    <read_statement>, <write_statement>, <compound_statement>}
+# Non-terminals
+
+T = {int, float, struct, if, else, while, do, then, var, read, write, begin, end, 
+    +, -, *, /, %, :=, <, <=, ==, =>, >, <>, (, ), [, ], {, }, :, ;, ,, " "}
+# Terminals
+
 
 # The top-level structure of a program
 <program> ::= <declarations> <statements>
